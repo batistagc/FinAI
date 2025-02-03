@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct CardView: View {
+    var totalIncomes: Double
+    var totalOutcomes: Double
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
@@ -13,16 +16,16 @@ struct CardView: View {
                         Text("Incomes")
                             .font(.headline)
                             .foregroundColor(.green)
-                        Text("$5,000.00")
+                        Text("$\(totalIncomes, specifier: "%.2f")")
                             .font(.title2)
                             .fontWeight(.bold)
                     }
 
                     VStack {
-                        Text("Outcomes")
+                        Text("Expenses")
                             .font(.headline)
                             .foregroundColor(.red)
-                        Text("$3,200.00")
+                        Text("$\(totalOutcomes, specifier: "%.2f")")
                             .font(.title2)
                             .fontWeight(.bold)
                     }
@@ -35,6 +38,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView()
+        CardView(totalIncomes: 0.00, totalOutcomes: 0.00)
     }
 }
