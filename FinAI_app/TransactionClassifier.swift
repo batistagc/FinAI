@@ -1,24 +1,34 @@
 import CoreML
 
 class TransactionClassifier {
-    let model: TransactionClassifierModel
+    static let shared = TransactionClassifier()
+    private var model: TransactionClassifierModel?
 
     init() {
+        loadModel()
+    }
+
+    private func loadModel() {
         do {
-            model = try TransactionClassifierModel(configuration: MLModelConfiguration())
+            let config = MLModelConfiguration()
+            model = try TransactionClassifierModel(configuration: config)
         } catch {
             fatalError("Error loading the model: \(error)")
         }
     }
 
     func classifyTransaction(description: String) -> String? {
+        guard let model = model else { return "Unknown"}
         do {
-            let prediction = try model.prediction(text: description)
-            return prediction.label
-        } catch {
-            print("Error classifying transaction: \(error)")
-            return nil
-        }
+                    let input = TransactionClassifierModelInput(text: description)
+
+                    let prediction = try model.prediction(input: input)
+
+                    return prediction.label
+                } catch {
+                    print("Erro ao prever categoria: \(error)")
+                    return nil
+                }
     }
 }
 

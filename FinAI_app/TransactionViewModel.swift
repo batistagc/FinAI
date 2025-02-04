@@ -28,7 +28,12 @@ class TransactionViewModel: ObservableObject {
         newTransaction.amount = amount
         newTransaction.type = type
         newTransaction.date = date
-        newTransaction.category = classifier.classifyTransaction(description: title)
+
+        if type.lowercased() == "expense" && category == nil {
+            newTransaction.category = TransactionClassifier.shared.classifyTransaction(description: title)
+        } else {
+            newTransaction.category = category
+        }
 
         saveContext()
         fetchTransactions()
@@ -42,11 +47,16 @@ class TransactionViewModel: ObservableObject {
         }
     }
 
-    var totalIncomes: Double {
-          transactions.filter { $0.type == "Income" }.reduce(0) { $0 + $1.amount }
-      }
+    func updateCategory(for transaction: Transaction, newCategory: String) {
+        transaction.category = newCategory
+        saveContext()
+    }
 
-      var totalOutcomes: Double {
-          transactions.filter { $0.type == "Expense" }.reduce(0) { $0 + $1.amount }
-      }
+    var totalIncomes: Double {
+        transactions.filter { $0.type == "Income" }.reduce(0) { $0 + $1.amount }
+    }
+
+    var totalOutcomes: Double {
+        transactions.filter { $0.type == "Expense" }.reduce(0) { $0 + $1.amount }
+    }
 }

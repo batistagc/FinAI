@@ -43,6 +43,18 @@ struct SummaryView: View {
                                .foregroundColor(.gray)
                        }
                        Spacer()
+                       Picker("Categoria", selection: Binding(
+                                   get: { transaction.category ?? "Unknown" },
+                                   set: { newCategory in
+                                       viewModel.updateCategory(for: transaction, newCategory: newCategory)
+                                   }
+                               )) {
+                                   ForEach(["Alimentação", "Transporte", "Saúde", "Entretenimento", "Moradia", "Viagem", "Educação", "Compras", "Assinaturas", "Outros"], id: \.self) { category in
+                                       Text(category)
+                                   }
+                               }
+                               .pickerStyle(MenuPickerStyle())
+                       
                        Text("$\(transaction.amount, specifier: "%.2f")")
                            .fontWeight(.bold)
                    }
