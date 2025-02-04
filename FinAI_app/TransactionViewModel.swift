@@ -5,6 +5,7 @@ class TransactionViewModel: ObservableObject {
     @Published var transactions: [Transaction] = []
     private var cancellables = Set<AnyCancellable>()
     private let context: NSManagedObjectContext
+    private let classifier = TransactionClassifier()
 
     init(context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext) {
         self.context = context
@@ -26,8 +27,8 @@ class TransactionViewModel: ObservableObject {
         newTransaction.title = title
         newTransaction.amount = amount
         newTransaction.type = type
-        newTransaction.category = category
         newTransaction.date = date
+        newTransaction.category = classifier.classifyTransaction(description: title)
 
         saveContext()
         fetchTransactions()
