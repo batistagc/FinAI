@@ -8,9 +8,9 @@ struct ContentView: View {
                     Label("Summary", systemImage: "chart.bar")
                 }
 
-            InsightView()
+            InsightsView()
                 .tabItem {
-                    Label("Insight", systemImage: "lightbulb")
+                    Label("Analytics", systemImage: "lightbulb")
                 }
         }
     }
