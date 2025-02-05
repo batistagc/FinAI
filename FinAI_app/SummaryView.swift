@@ -43,13 +43,13 @@ struct SummaryView: View {
                                .foregroundColor(.gray)
                        }
                        Spacer()
-                       Picker("Categoria", selection: Binding(
+                       Picker("", selection: Binding(
                                    get: { transaction.category ?? "Unknown" },
                                    set: { newCategory in
                                        viewModel.updateCategory(for: transaction, newCategory: newCategory)
                                    }
                                )) {
-                                   ForEach(["Alimentação", "Transporte", "Saúde", "Entretenimento", "Moradia", "Viagem", "Educação", "Compras", "Assinaturas", "Outros"], id: \.self) { category in
+                                   ForEach(["Food", "Transport", "Health", "Entertainment", "Home", "Trip", "Education", "Shopping", "Signatures", "Others"], id: \.self) { category in
                                        Text(category)
                                    }
                                }

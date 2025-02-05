@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct InsightsView: View {
-    @StateObject private var viewModel = InsightsViewModel()
+    @State private var viewModel = InsightsViewModel()
 
     var body: some View {
         ScrollView {
@@ -20,6 +20,9 @@ struct InsightsView: View {
                 }
             }
             .padding()
+        }
+        .onAppear{
+            self.viewModel = InsightsViewModel()
         }
     }
 }

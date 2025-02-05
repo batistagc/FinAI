@@ -8,7 +8,7 @@ struct NewTransactionView: View {
     @State private var category = ""
     @State private var date = Date()
 
-    let categories = ["Food", "Entertainment", "Shopping", "Transport", "Others"]
+    let categories = ["Food", "Transport", "Health", "Entertainment", "Home", "Trip", "Education", "Shopping", "Signatures", "Others"]
 
     var body: some View {
         NavigationView {
@@ -31,9 +31,9 @@ struct NewTransactionView: View {
 
                 if type == "Expense" {
                     Picker("Category", selection: $category) {
-                        ForEach(categories, id: \ .self) { category in
-                            Text(category)
-                        }
+                        ForEach(categories, id: \.self) { category in
+                            Text(category).tag(category)
+                    }
                     }
                     .pickerStyle(MenuPickerStyle())
                     .padding()
