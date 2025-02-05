@@ -50,6 +50,7 @@ class TransactionViewModel: ObservableObject {
     func updateCategory(for transaction: Transaction, newCategory: String) {
         transaction.category = newCategory
         saveContext()
+        fetchTransactions()
     }
 
     var totalIncomes: Double {
