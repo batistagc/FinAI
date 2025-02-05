@@ -3,7 +3,9 @@
 ## Apresentação
 O **FinAI** é um assistente financeiro virtual que utiliza Inteligência Artificial para simplificar a gestão financeira dos usuários. Com categorização automática de despesas, gráficos detalhados e insights inteligentes, o FinAI ajuda os usuários a tomarem decisões financeiras mais informadas. O aplicativo foi projetado para ser intuitivo e acessível, garantindo uma experiência agradável e eficiente.
 
-<video src="FinAI/Samples/FinAI_Sample.mp4"></video>
+
+https://github.com/user-attachments/assets/b3164491-e276-45ca-aa82-767c30a20dc1
+
 
 ## Contexto
 Este projeto foi desenvolvido como parte de um desafio técnico para uma entrevista na [Act Digital](https://actdigital.com/pt). Utilizando metodologias de **Design Thinking**, busquei criar uma solução inovadora que demonstrasse **proatividade, criatividade e conhecimento técnico**. O FinAI não é apenas um aplicativo financeiro, mas também uma demonstração das minhas habilidades em desenvolvimento iOS e aplicação de inteligência artificial no setor financeiro.
